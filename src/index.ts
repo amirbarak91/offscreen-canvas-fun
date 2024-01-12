@@ -1,23 +1,19 @@
 import "./styles/index.scss";
 import { Renderer } from "./entities/renderer/renderer";
-import { every, filter } from "rxjs";
+
+let isRunning = true;
 
 const canvas: HTMLCanvasElement = <HTMLCanvasElement>(
   document.getElementById("canvas")
 );
 canvas.width = 600;
 canvas.height = 300;
-
-// gytfty
-
 const renderer = new Renderer(canvas);
+renderer.start();
+const controlButtom = document.getElementById("control") as HTMLElement;
 
-// setInterval(() => {
-//   let i = 999_999;
-//   while (i > 0) {
-//     i--;
-//   }
-// }, 12);
-// setTimeout(() => {
-//   while (true) {}
-// }, 4000);
+controlButtom.addEventListener("click", function () {
+  isRunning = !isRunning;
+  controlButtom.textContent = isRunning ? "Pause" : "Start";
+  isRunning ? renderer.continue() : renderer.pause();
+});

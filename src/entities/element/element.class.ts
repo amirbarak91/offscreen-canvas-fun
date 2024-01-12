@@ -117,9 +117,6 @@ export class SquareRenderEE extends RendreEE {
   }
 
   protected drawElement(ctx: OffscreenCanvasRenderingContext2D): void {
-    // ctx.fillStyle = d3.interpolateSpectral(
-    //   this.color / SquareRenderEE.maxColor
-    // );
     ctx.rect(this.position.x, this.position.y, this.width, this.height);
   }
 
@@ -146,6 +143,18 @@ export class CircleRenderEE extends RendreEE {
     super(position, velocity);
   }
 
+  public get left(): number {
+    return this.position.x - this._radius;
+  }
+  public get right(): number {
+    return this.position.x + this._radius;
+  }
+  public get top(): number {
+    return this.position.y - this._radius;
+  }
+  public get bottom(): number {
+    return this.position.y + this._radius;
+  }
   public get radius(): number {
     return this._radius;
   }
@@ -170,9 +179,6 @@ export class CircleRenderEE extends RendreEE {
   }
 
   protected drawElement(ctx: OffscreenCanvasRenderingContext2D): void {
-    // ctx.fillStyle = d3.interpolateSpectral(
-    //   this.color / CircleRenderEE.maxColor
-    // );
     ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
   }
 

@@ -1,7 +1,8 @@
 export enum RendererAction {
-    init,
-    render,
-    draw1,
-    draw2,
+  init,
+  render,
+  pause,
+  continue,
+  draw1,
+  draw2,
 }
-
